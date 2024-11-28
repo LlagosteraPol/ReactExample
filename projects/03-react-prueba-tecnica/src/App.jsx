@@ -4,7 +4,7 @@ import './App.css'
 
 const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
 //const CAT_ENDPOINT_IMAGE_URL = `https://cataas.com/cat/says/${firstWord}?size=50&color=red&json=true`
-const CAT_PREFIX_IMAGE_URL = 'https://cataas.com'
+const CAT_PREFIX_IMAGE_URL = 'https://cataas.com/cat/says/'
 
 
 function App() {
@@ -33,13 +33,14 @@ function App() {
   useEffect(() => {
     if (!fact) return
     const threeFirstWord = fact.split(' ', 3).join(' ')
-
-    fetch(`https://cataas.com/cat/says/${threeFirstWord}`)
+    setImageUrl(threeFirstWord)
+    // Not working with the new API update (they don't show anymore the url in the json)
+    /*fetch(`https://cataas.com/cat/says/${threeFirstWord}`)
           .then(res => res.json())
           .then(response => { 
             const { url } = response
             setImageUrl(url)
-          })
+          })*/
   }, [fact])
 
   return (
